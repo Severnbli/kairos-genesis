@@ -1,0 +1,23 @@
+# docker compose up dev   → http://localhost:5173 (site) and http://localhost:5173/admin.html (editor)
+# docker compose up site  → http://localhost:8080 (production build, no admin)
+services:
+  dev:
+    build:
+      context: .
+      target: dev
+    ports:
+      # Bound to localhost only: the admin can write files, keep it off the network.
+      - "127.0.0.1:5173:5173"
+    volumes:
+      # Your working tree, so admin saves land in src/story.json and public/media on the host.
+      - .:/app
+      # Keep the container's node_modules (Linux/Alpine build) separate from the host's.
+      - /app/node_modules
+
+  site:
+    build:
+      context: .
+      target: prod
+    ports:
+      - "8080:80"
+    restart: unless-stopped

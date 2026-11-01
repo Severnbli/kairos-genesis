@@ -1,0 +1,40 @@
+.summary__list {
+  width: 100%;
+  margin: 0 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.summary__row {
+  padding: 0.85rem 1rem;
+  background: var(--kg-bg-elevated);
+  border: 1px solid var(--kg-border);
+  border-radius: var(--kg-radius);
+}
+
+.summary__row dt {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--kg-text-muted);
+}
+
+.summary__row dd {
+  margin: 0.2rem 0 0;
+  font-family: var(--kg-font-display);
+  font-size: 1.2rem;
+}
+
+.summary__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.summary__status {
+  min-height: 1.5em;
+  margin-top: 1rem;
+  color: var(--kg-accent);
+  font-style: italic;
+}

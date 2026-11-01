@@ -1,0 +1,173 @@
+{
+  "meta": {
+    "title": "Kairos-Genesis",
+    "description": "A small world, made for one evening.",
+    "lang": "en",
+    "storageKey": "kairos-genesis",
+    "fontsUrl": "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap"
+  },
+  "vars": {
+    "recipient": "Alex",
+    "author": "Sam"
+  },
+  "theme": {
+    "bg": "#0f0d14",
+    "bgElevated": "#1a1621",
+    "text": "#efe8dc",
+    "textMuted": "#a69c8e",
+    "accent": "#d9b98c",
+    "accentSoft": "#c98b8b",
+    "border": "#2e2836",
+    "radius": "14px"
+  },
+  "ambient": {
+    "particles": true,
+    "density": 1
+  },
+  "submit": {
+    "endpoint": "",
+    "telegram": "",
+    "whatsapp": "",
+    "email": "",
+    "share": true
+  },
+  "labels": {
+    "next": "Next",
+    "back": "Back"
+  },
+  "steps": [
+    {
+      "type": "intro",
+      "eyebrow": "Καιρός · Γένεσις",
+      "title": "Hello, {recipient}",
+      "subtitle": "Some moments are meant to become beginnings.\nThis one needs a few answers from you.",
+      "begin": "Begin"
+    },
+    {
+      "type": "message",
+      "variant": "letter",
+      "eyebrow": "Before anything else",
+      "lines": [
+        "I could have just sent a message with a time and a place.",
+        "But I wanted our first evening to start a little earlier – here, with a few small choices that are entirely yours.",
+        "No wrong answers. Take your time."
+      ],
+      "signature": "– {author}"
+    },
+    {
+      "type": "confirm",
+      "id": "date",
+      "title": "So… is it a date?",
+      "recapLabel": "A date?",
+      "yes": "Yes",
+      "no": "No",
+      "yesResponse": "Then it is a beginning.",
+      "noResponse": "Hm. Let me ask again later.",
+      "dodge": true,
+      "advanceOnYes": true
+    },
+    {
+      "type": "choice",
+      "id": "place",
+      "eyebrow": "Where",
+      "title": "Where should we go?",
+      "recapLabel": "Where",
+      "layout": "cards",
+      "autoAdvance": true,
+      "allowOther": true,
+      "otherLabel": "Somewhere else…",
+      "options": [
+        { "value": "dinner", "label": "Dinner", "emoji": "🍷", "hint": "A quiet table, candles", "response": "Good choice." },
+        { "value": "walk", "label": "Evening walk", "emoji": "🌙", "hint": "City lights, no plan", "response": "I know a route." },
+        { "value": "coffee", "label": "Coffee & dessert", "emoji": "☕", "hint": "Something sweet", "response": "Sweet." },
+        { "value": "museum", "label": "Museum or gallery", "emoji": "🖼️", "hint": "Something to talk about", "response": "Then we will never run out of topics." },
+        { "value": "cinema", "label": "Cinema", "emoji": "🎬", "hint": "And a talk after", "response": "Popcorn is on me." },
+        { "value": "surprise", "label": "Surprise me", "emoji": "✨", "hint": "Trust me", "response": "Challenge accepted." }
+      ]
+    },
+    {
+      "type": "choice",
+      "id": "cuisine",
+      "title": "What are you in the mood for?",
+      "subtitle": "Pick up to three.",
+      "recapLabel": "Food",
+      "when": [{ "id": "place", "op": "equals", "value": "dinner" }],
+      "layout": "grid",
+      "multiple": true,
+      "min": 1,
+      "max": 3,
+      "options": [
+        { "value": "italian", "label": "Italian", "emoji": "🍝" },
+        { "value": "japanese", "label": "Japanese", "emoji": "🍣" },
+        { "value": "georgian", "label": "Georgian", "emoji": "🥟" },
+        { "value": "french", "label": "French", "emoji": "🥐" },
+        { "value": "asian", "label": "Asian", "emoji": "🍜" },
+        { "value": "anything", "label": "Anything", "emoji": "🎲" }
+      ]
+    },
+    {
+      "type": "choice",
+      "id": "drink",
+      "title": "And to drink?",
+      "recapLabel": "Drink",
+      "layout": "list",
+      "options": [
+        { "value": "wine", "label": "Wine", "emoji": "🍷" },
+        { "value": "cocktail", "label": "A cocktail", "emoji": "🍸" },
+        { "value": "tea", "label": "Tea", "emoji": "🫖" },
+        { "value": "none", "label": "Something without alcohol", "emoji": "🍋" }
+      ]
+    },
+    {
+      "type": "date",
+      "id": "when",
+      "eyebrow": "When",
+      "title": "Which evening works for you?",
+      "recapLabel": "When",
+      "dates": ["2026-11-06", "2026-11-07", "2026-11-08", "2026-11-13", "2026-11-14"],
+      "times": ["18:00", "19:00", "20:00"],
+      "customTime": true
+    },
+    {
+      "type": "scale",
+      "id": "adventure",
+      "title": "How adventurous do you feel?",
+      "recapLabel": "Adventure level",
+      "min": 0,
+      "max": 4,
+      "initial": 2,
+      "minLabel": "Cozy",
+      "maxLabel": "Wild",
+      "marks": ["Cozy and calm", "Mostly calm", "Balanced", "Up for anything", "Surprise me completely"]
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "title": "Anything I should know?",
+      "subtitle": "Allergies, things you love, things you can't stand.",
+      "recapLabel": "Note",
+      "placeholder": "Write anything…",
+      "multiline": true,
+      "maxLength": 500
+    },
+    {
+      "type": "message",
+      "variant": "quote",
+      "lines": ["{place}, {when}.", "I am already looking forward to it."],
+      "signature": "– {author}"
+    },
+    {
+      "type": "summary",
+      "eyebrow": "Almost there",
+      "title": "Here is our plan",
+      "subtitle": "Send it to me and I will take care of the rest.",
+      "messageHeading": "Our plan ✨",
+      "sendLabel": "Send it to {author}",
+      "sentText": "Sent. See you soon.",
+      "errorText": "Something went wrong. Try another way below.",
+      "shareLabel": "Copy / share",
+      "copiedText": "Copied – now paste it to me.",
+      "restartLabel": "Start over"
+    }
+  ]
+}

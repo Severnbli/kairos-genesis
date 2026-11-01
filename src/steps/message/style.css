@@ -1,0 +1,50 @@
+.message__line {
+  font-family: var(--kg-font-display);
+  font-size: clamp(1.2rem, 4.4vw, 1.45rem);
+  line-height: 1.55;
+  margin: 0 0 1.1em;
+  max-width: 34ch;
+}
+
+.message__signature {
+  font-family: var(--kg-font-display);
+  font-style: italic;
+  color: var(--kg-accent);
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+}
+
+.message--quote {
+  text-align: center;
+  align-items: center;
+}
+
+.message__quote {
+  margin: 0;
+  font-family: var(--kg-font-display);
+  font-style: italic;
+  font-size: clamp(1.7rem, 6.5vw, 2.7rem);
+  line-height: 1.2;
+  max-width: 22ch;
+}
+
+.message__quote p {
+  margin: 0 0 0.5em;
+}
+
+.message__by {
+  color: var(--kg-text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+.message__button {
+  margin-top: 2rem;
+  align-self: flex-start;
+}
+
+.message--quote .message__button {
+  align-self: center;
+}

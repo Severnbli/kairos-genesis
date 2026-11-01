@@ -1,0 +1,18 @@
+/*
+ * Design tokens. story.json → theme overrides these at runtime (see core/theme.ts),
+ * so prefer changing colors and fonts in the admin rather than here.
+ */
+:root {
+  --kg-bg: #0f0d14;
+  --kg-bg-elevated: #1a1621;
+  --kg-text: #efe8dc;
+  --kg-text-muted: #a69c8e;
+  --kg-accent: #d9b98c;
+  --kg-accent-soft: #c98b8b;
+  --kg-border: #2e2836;
+  --kg-font-display: 'EB Garamond', 'Iowan Old Style', Georgia, serif;
+  --kg-font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --kg-radius: 14px;
+  --kg-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  color-scheme: dark;
+}

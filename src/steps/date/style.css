@@ -1,0 +1,39 @@
+.date__days {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.date__day {
+  flex-direction: column;
+  padding: 0.7rem 0.4rem;
+  gap: 0.1rem;
+}
+
+.date__weekday,
+.date__month {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--kg-text-muted);
+}
+
+.date__num {
+  font-family: var(--kg-font-display);
+  font-size: 1.7rem;
+  line-height: 1.1;
+}
+
+.date__times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  width: 100%;
+}
+
+.date__time-input {
+  width: auto;
+  flex: 0 0 auto;
+}

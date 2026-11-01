@@ -1,0 +1,6 @@
+/*
+ * Your personal overrides. Loaded last, so anything here wins.
+ * Target a single step with its `appearance.className` (set in the admin), e.g.:
+ *
+ * .my-special-step .step-title { color: hotpink; }
+ */

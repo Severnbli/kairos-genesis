@@ -1,0 +1,243 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--kg-accent-soft) 12%, transparent), transparent 60%),
+    var(--kg-bg);
+  color: var(--kg-text);
+  font-family: var(--kg-font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--kg-accent) 35%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--kg-accent);
+  outline-offset: 3px;
+}
+
+#app {
+  position: relative;
+  height: 100dvh;
+}
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---------- Stage & steps ---------- */
+
+.stage {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}
+
+.step {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  padding: max(3rem, env(safe-area-inset-top)) 16px calc(6rem + env(safe-area-inset-bottom));
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+  transition: opacity 0.7s var(--kg-ease), transform 0.7s var(--kg-ease), visibility 0s linear 0.7s;
+}
+
+.step.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0.15s, 0.15s, 0s;
+}
+
+.step__inner {
+  margin: auto;
+  width: 100%;
+  max-width: 34rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.step--start .step__inner {
+  margin-top: 0;
+}
+
+.step--has-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgb(0 0 0 / var(--step-overlay, 0.55)), rgb(0 0 0 / var(--step-overlay, 0.55))),
+    var(--step-bg) center / cover no-repeat;
+}
+
+.empty {
+  margin: auto;
+  padding: 2rem;
+  color: var(--kg-text-muted);
+  text-align: center;
+}
+
+/* ---------- Shared typography ---------- */
+
+.step-header {
+  margin-bottom: 1.75rem;
+  width: 100%;
+}
+
+.eyebrow {
+  margin: 0 0 0.9rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--kg-accent);
+}
+
+.step-title {
+  margin: 0;
+  font-family: var(--kg-font-display);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 7vw, 2.7rem);
+  line-height: 1.1;
+}
+
+.step-subtitle {
+  margin: 0.75rem 0 0;
+  color: var(--kg-text-muted);
+  white-space: pre-line;
+}
+
+/* Staggered entrance; replays whenever a step becomes active. */
+.reveal {
+  opacity: 0;
+}
+
+.step.is-active .reveal {
+  animation: kg-rise 0.9s var(--kg-ease) both;
+  animation-delay: calc(0.25s + var(--i, 0) * 0.11s);
+}
+
+@keyframes kg-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ---------- Navigation ---------- */
+
+.nav {
+  position: fixed;
+  z-index: 2;
+  left: 50%;
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  width: min(34rem, calc(100% - 32px));
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: opacity 0.5s var(--kg-ease);
+}
+
+.nav--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav--nudge {
+  animation: kg-nudge 0.4s;
+}
+
+@keyframes kg-nudge {
+  25% { transform: translateX(calc(-50% - 6px)); }
+  75% { transform: translateX(calc(-50% + 6px)); }
+}
+
+.nav__btn {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--kg-border);
+  background: color-mix(in srgb, var(--kg-bg-elevated) 80%, transparent);
+  backdrop-filter: blur(8px);
+  color: var(--kg-text);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.3s, border-color 0.3s;
+}
+
+.nav__btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.nav__btn--next:not(:disabled):not(.is-locked) {
+  border-color: var(--kg-accent);
+  color: var(--kg-accent);
+}
+
+.nav__btn.is-locked {
+  opacity: 0.4;
+}
+
+.nav__progress {
+  flex: 1;
+  height: 2px;
+  background: var(--kg-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.nav__bar {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--kg-accent);
+  transition: width 0.6s var(--kg-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step,
+  .step.is-active .reveal,
+  .nav__bar {
+    animation: none;
+    transition: opacity 0.2s;
+    transform: none;
+  }
+  .reveal {
+    opacity: 1;
+  }
+}

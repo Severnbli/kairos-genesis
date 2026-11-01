@@ -1,0 +1,25 @@
+.step--intro .step__inner {
+  text-align: center;
+  align-items: center;
+}
+
+.intro__title {
+  font-family: var(--kg-font-display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 9vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.intro__subtitle {
+  color: var(--kg-text-muted);
+  font-size: 1.05rem;
+  max-width: 30ch;
+  margin: 1.25rem auto 0;
+  white-space: pre-line;
+}
+
+.intro__begin {
+  margin-top: 2.5rem;
+}

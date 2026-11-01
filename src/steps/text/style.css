@@ -1,0 +1,17 @@
+.text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.text__field {
+  resize: vertical;
+  min-height: 3rem;
+}
+
+.text__counter {
+  align-self: flex-end;
+  font-size: 0.75rem;
+  color: var(--kg-text-muted);
+}

@@ -1,0 +1,102 @@
+/* Controls shared by the form steps. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0 1.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.btn--primary {
+  background: var(--kg-accent);
+  color: var(--kg-bg);
+}
+
+.btn--primary:hover {
+  background: color-mix(in srgb, var(--kg-accent) 85%, white);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--kg-text);
+  border-color: var(--kg-border);
+}
+
+.btn--ghost:hover,
+.btn.is-selected {
+  border-color: var(--kg-accent);
+  color: var(--kg-accent);
+}
+
+.btn--primary.is-selected {
+  color: var(--kg-bg);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--kg-accent) 30%, transparent);
+}
+
+.btn--link {
+  background: none;
+  border: none;
+  color: var(--kg-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0 0.5rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 1.1rem;
+  border-radius: var(--kg-radius);
+  border: 1px solid var(--kg-border);
+  background: var(--kg-bg-elevated);
+  color: var(--kg-text);
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+
+.chip.is-selected {
+  border-color: var(--kg-accent);
+  background: color-mix(in srgb, var(--kg-accent) 14%, var(--kg-bg-elevated));
+}
+
+.field {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--kg-radius);
+  border: 1px solid var(--kg-border);
+  background: var(--kg-bg-elevated);
+  color: var(--kg-text);
+  font: inherit;
+  transition: border-color 0.25s;
+}
+
+.field:focus {
+  outline: none;
+  border-color: var(--kg-accent);
+}
+
+.field::placeholder {
+  color: color-mix(in srgb, var(--kg-text-muted) 70%, transparent);
+}

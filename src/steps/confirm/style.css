@@ -1,0 +1,25 @@
+.step--confirm .step__inner {
+  text-align: center;
+  align-items: center;
+}
+
+.confirm__row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.confirm__no {
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.3);
+}
+
+.confirm__response {
+  min-height: 1.6em;
+  margin-top: 2rem;
+  font-family: var(--kg-font-display);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--kg-accent);
+}

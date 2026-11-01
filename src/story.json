@@ -38,7 +38,7 @@
   "steps": [
     {
       "type": "intro",
-      "eyebrow": "Καιρός · Γένεσις",
+      "eyebrow": "ΚΑΙΡΟΣ · ΓΕΝΕΣΙΣ",
       "title": "Hello, {recipient}",
       "subtitle": "Some moments are meant to become beginnings.\nThis one needs a few answers from you.",
       "begin": "Begin"

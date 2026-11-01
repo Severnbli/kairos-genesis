@@ -49,3 +49,8 @@ if (preview) {
     if (e.key === DRAFT_KEY) location.reload();
   });
 }
+
+// Dev: reload open tabs when the admin saves story.json (the admin itself is not reloaded).
+import.meta.hot?.on('kairos:story-saved', () => {
+  if (!preview) location.reload();
+});

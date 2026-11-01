@@ -20,6 +20,13 @@ function adminApi(): Plugin {
   return {
     name: 'kairos-admin-api',
     apply: 'serve',
+    // Saving story.json must not full-reload the admin. Tell open site tabs instead.
+    handleHotUpdate({ file, server }) {
+      if (file === STORY_PATH) {
+        server.ws.send({ type: 'custom', event: 'kairos:story-saved' });
+        return [];
+      }
+    },
     configureServer(server) {
       server.middlewares.use('/__admin', async (req, res) => {
         try {

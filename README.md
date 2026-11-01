@@ -8,6 +8,9 @@ You send a link. They walk through a few elegant steps (*is it a date? where sho
 
 You personalize everything in a built-in editor with a live phone preview. No code needed.
 
+> **Start with [Use this template → Create a new repository](https://github.com/Severnbli/kairos-genesis/generate) and choose _Private_.**
+> Don't fork: a fork of a public repository is always public, and your story (names, messages, where answers go) would be visible to everyone.
+
 ![Admin editor with live phone preview](docs/screenshot.png)
 
 ## How it works
@@ -28,7 +31,11 @@ You personalize everything in a built-in editor with a live phone preview. No co
 
 ### 1. Get a private copy
 
-Your story is personal, so don't fork it publicly: use **Use this template → Private repository** on GitHub, then clone it.
+1. Click **[Use this template → Create a new repository](https://github.com/Severnbli/kairos-genesis/generate)**.
+2. Set visibility to **Private**. Leave *Include all branches* off: you only need `main`.
+3. Clone your new repository.
+
+Why not Fork? GitHub forks of a public repository are always public and can't be made private, so everything you write would be readable by anyone. A template copy is a fresh, independent repository that you own, with its own history and visibility.
 
 ### 2. Start the editor
 
@@ -79,7 +86,7 @@ Upload `dist/`. Paths are relative, so it works from any sub-path.
 docker compose up -d --build site    # http://localhost:8080
 ```
 
-**Prebuilt image from CI:** `.github/workflows/docker.yml` builds a multi-arch image (amd64, arm64) and pushes it to Docker Hub – `:latest` from `main`, `:dev` from `dev`, `:1.2.3` from `v1.2.3` tags. It needs the repo secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN`; in a fork, change `IMAGE` in the workflow to your own repository. Then on the server:
+**Prebuilt image from CI:** `.github/workflows/docker.yml` builds a multi-arch image (amd64, arm64) and pushes it to Docker Hub – `:latest` from `main`, `:dev` from `dev`, `:1.2.3` from `v1.2.3` tags. It needs the repo secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN`; in your copy, change `IMAGE` in the workflow to your own repository. Then on the server:
 
 ```bash
 docker run -d -p 8080:80 --restart unless-stopped <you>/kairos-genesis:latest

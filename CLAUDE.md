@@ -1,6 +1,6 @@
 # Kairos-Genesis
 
-A simple, personal date form site: an invitation to a date (first or not) built from form steps. The recipient walks through them (is it a date, where to go, which evening, anything to know) and sends the answers back as a plan. This repo is a **base meant to be forked** and personalized, mostly through the admin, without touching code.
+A simple, personal date form site: an invitation to a date (first or not) built from form steps. The recipient walks through them (is it a date, where to go, which evening, anything to know) and sends the answers back as a plan. This repo is a **GitHub template**: users copy it with "Use this template" into a private repository (never a fork, since forks of a public repo are always public) and personalize it, mostly through the admin, without touching code. "Fork" below means such a copy.
 
 ## Spirit (applies to every change)
 

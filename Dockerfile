@@ -1,7 +1,9 @@
 # syntax=docker/dockerfile:1
 
 # ---- deps: install once, shared by dev and build ----
-FROM node:24-alpine AS deps
+# Runs on the builder's native platform: the output is static files, identical for every arch,
+# so multi-arch builds only differ in the final nginx layer (no slow emulated npm ci).
+FROM --platform=$BUILDPLATFORM node:24-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci && chown -R node:node /app

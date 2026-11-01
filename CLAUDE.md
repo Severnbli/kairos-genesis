@@ -26,6 +26,8 @@ docker compose up site   # production build behind nginx on :8080
 
 Work on the `dev` branch; `main` deploys to GitHub Pages.
 
+CI (`.github/workflows/`): `pages.yml` deploys `main` to GitHub Pages; `docker.yml` pushes the `prod` image to Docker Hub as `severnbli/kairos-genesis` (`:latest` from main, `:dev` from dev, semver from `v*` tags; secrets `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`). The deps/build stages use `--platform=$BUILDPLATFORM` on purpose: only the nginx stage is per-arch.
+
 ## Architecture
 
 ```

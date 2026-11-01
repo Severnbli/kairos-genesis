@@ -78,13 +78,19 @@ Configured under **Story settings → Getting the answers back** (`submit` in `s
 
 - **GitHub Pages**: `.github/workflows/pages.yml` deploys `main` automatically (enable *Settings → Pages → Source: GitHub Actions*).
 - **Any static host** (Netlify, Cloudflare Pages, Vercel): upload `dist/`.
-- **Your own server**: `docker compose up -d site`.
+- **Your own server**: `docker compose up -d site`, or pull the prebuilt image:
+
+  ```bash
+  docker run -d -p 8080:80 --restart unless-stopped severnbli/kairos-genesis:latest
+  ```
+
+  `.github/workflows/docker.yml` builds a multi-arch image (amd64, arm64) and pushes it to Docker Hub: `:latest` from `main`, `:dev` from `dev`, `:1.2.3` from `v1.2.3` tags. It needs the repo secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN`; forks change `IMAGE` in the workflow.
 
 The build uses relative paths, so it works from any sub-path.
 
 ### Privacy
 
-Your story is personal. A fork of a public repository is public too, so consider **Use this template** → private repository instead. The page sends `noindex` so search engines skip it, but anyone with the link can open it.
+Your story is personal. A fork of a public repository is public too, so consider **Use this template** → private repository instead. The page sends `noindex` so search engines skip it, but anyone with the link can open it. The Docker image contains your whole story, so make the Docker Hub repository private too.
 
 ## Adding a new step type
 

@@ -15,6 +15,8 @@ services:
       - /app/node_modules
 
   site:
+    # `docker compose pull site` fetches the image CI pushed to Docker Hub instead of building.
+    image: severnbli/kairos-genesis:latest
     build:
       context: .
       target: prod

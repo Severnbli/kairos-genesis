@@ -2,7 +2,7 @@
 
 > *Some moments are meant to become beginnings.*
 
-A base for a small, personal website made for a first date. The person you send it to goes through a few elegant steps (*is it a date? where should we go? which evening? anything I should know?*), and the answers come back to you as a ready plan.
+A simple, personal website for inviting someone on a date – the first one or the fiftieth. The person you send it to goes through a few elegant form steps (*is it a date? where should we go? which evening? anything I should know?*), and the answers come back to you as a ready plan.
 
 Every step is a module, and the whole story is one JSON file that you edit in a built-in admin with a live preview. Fork it, make it yours, send the link.
 
@@ -13,7 +13,7 @@ Every step is a module, and the whole story is one JSON file that you edit in a 
 - **Kairos (καιρός)** – the opportune moment, when circumstances align and something meaningful happens.
 - **Genesis (γένεσις)** – origin, birth, the beginning of something new.
 
-Together: *the birth of something meaningful at the right moment.* The site should feel sincere, curious, elegant, warm and a little mysterious – a small world made for one particular person, not a landing page.
+Together: *the birth of something meaningful at the right moment.* Every date can be that moment. The site should feel sincere, warm, elegant and a little mysterious – a small world made for one particular person, not a landing page or a survey.
 
 ## Quick start
 
@@ -76,7 +76,6 @@ Configured under **Story settings → Getting the answers back** (`submit` in `s
 
 ## Deploying
 
-- **GitHub Pages**: `.github/workflows/pages.yml` deploys `main` automatically (enable *Settings → Pages → Source: GitHub Actions*).
 - **Any static host** (Netlify, Cloudflare Pages, Vercel): upload `dist/`.
 - **Your own server**: `docker compose up -d site`, or pull the prebuilt image:
 

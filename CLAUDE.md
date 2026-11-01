@@ -1,10 +1,11 @@
 # Kairos-Genesis
 
-A personal, modular website for a first date. The recipient walks through a sequence of form steps (is it a date, where to go, which evening, anything to know) and sends the answers back as a plan. This repo is a **base meant to be forked** and personalized, mostly through the admin, without touching code.
+A simple, personal date form site: an invitation to a date (first or not) built from form steps. The recipient walks through them (is it a date, where to go, which evening, anything to know) and sends the answers back as a plan. This repo is a **base meant to be forked** and personalized, mostly through the admin, without touching code.
 
 ## Spirit (applies to every change)
 
 - *Some moments are meant to become beginnings.* The site should feel sincere, curious, elegant, warm, with a subtle sense of mystery. A small personal world, never a generic landing page or a survey tool.
+- Keep the base general: it should work for a first date, an anniversary or any evening out. Don't assume a first meeting in default copy; forks make it specific.
 - Prefer restraint: quiet motion, generous spacing, serif display type, one accent color. Every new step type should look like it belongs to the same world.
 - Mobile first: the link is almost always opened on a phone. Test at 390×844.
 - Respect `prefers-reduced-motion`.
@@ -24,9 +25,9 @@ docker compose up dev    # same as npm run dev, source bind-mounted
 docker compose up site   # production build behind nginx on :8080
 ```
 
-Work on the `dev` branch; `main` deploys to GitHub Pages.
+Work on the `dev` branch; merge into `main` to release. No GitHub Pages: the site ships as a Docker image (or `dist/` on any static host).
 
-CI (`.github/workflows/`): `pages.yml` deploys `main` to GitHub Pages; `docker.yml` pushes the `prod` image to Docker Hub as `severnbli/kairos-genesis` (`:latest` from main, `:dev` from dev, semver from `v*` tags; secrets `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`). The deps/build stages use `--platform=$BUILDPLATFORM` on purpose: only the nginx stage is per-arch.
+CI (`.github/workflows/docker.yml`) pushes the `prod` image to Docker Hub as `severnbli/kairos-genesis` (`:latest` from main, `:dev` from dev, semver from `v*` tags; secrets `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`). The deps/build stages use `--platform=$BUILDPLATFORM` on purpose: only the nginx stage is per-arch.
 
 ## Architecture
 

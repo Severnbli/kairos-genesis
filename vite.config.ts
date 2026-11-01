@@ -86,7 +86,7 @@ function send(res: ServerResponse, status: number, body: string): void {
 }
 
 export default defineConfig({
-  // Relative asset paths: the build works from any sub-path (GitHub Pages, nginx, a USB stick).
+  // Relative asset paths: the build works from any sub-path (nginx, any static host, a USB stick).
   base: './',
   plugins: [adminApi()],
   server: {
